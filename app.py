@@ -21,7 +21,11 @@ client = slack.WebClient(token=os.environ['SLACK_TOKEN'])
 BOT_ID = client.api_call("auth.test")['user_id']
 
 
+@app.route("/")
+def home_view():
+        return "<h1>Welcome to Geeks for Geeks</h1>"
 
+#BOT ACTIONS
 @slack_event_adapter.on('message')
 def message(payload):
     print(payload)
