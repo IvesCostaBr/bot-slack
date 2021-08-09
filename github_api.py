@@ -12,7 +12,7 @@ class GitHubManager:
         pass
 
 
-github = Github("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")
+github = Github("YOU TOKEN")
 
 for c in github.get_user().get_repos():
     print(c.get_pulls)
