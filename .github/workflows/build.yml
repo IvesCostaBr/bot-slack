@@ -45,7 +45,7 @@ jobs:
 
     - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       with:
-        heroku_api_key: 6608a59d-4603-40f8-9f96-2e4cc01a74d6
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "bot-slack-cerberus" #Must be unique in Heroku
         heroku_email: "ivespauiniam@gmail.com"
         branch: "master"
