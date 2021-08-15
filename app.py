@@ -8,10 +8,8 @@ from flask import Flask
 from slackeventsapi import SlackEventAdapter
 
 
-
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
-
 
 app = Flask(__name__)
 
@@ -26,9 +24,6 @@ BOT_ID = client.api_call("auth.test")['user_id']
 def home_view():
     return "<h1>Welcome do Painel Bot Slack</h1>"
 
-# #BOT ACTIONSpip install PyGithub
-#         client.chat_postMessage(channel=channel_id , text=text_event)
-    
 
 @app.route("/github")
 def github_api():
