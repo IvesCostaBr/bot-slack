@@ -15,11 +15,11 @@ load_dotenv(dotenv_path=env_path)
 
 app = Flask(__name__)
 
-# slack_event_adapter = SlackEventAdapter(
-#     os.environ['SIGINING_SECRET'],'/slack/events',app)
+slack_event_adapter = SlackEventAdapter(
+    os.environ['SIGINING_SECRET'],'/slack/events',app)
 
-# client = slack.WebClient(token=os.environ['SLACK_TOKEN'])
-# BOT_ID = client.api_call("auth.test")['user_id']
+client = slack.WebClient(token=os.environ['SLACK_TOKEN'])
+BOT_ID = client.api_call("auth.test")['user_id']
 
 
 @app.route("/")
@@ -43,4 +43,4 @@ def github_api():
 
 
 if __name__ == "__main__":
-    app.run(debug=os.environ['DEBUG'], port="8000")
+    app.run(debug=os.environ['DEBUG'])
