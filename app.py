@@ -8,27 +8,22 @@ from flask import Flask
 from slackeventsapi import SlackEventAdapter
 
 
-
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
-
 app = Flask(__name__)
 
-# slack_event_adapter = SlackEventAdapter(
-#     os.environ['SIGINING_SECRET'],'/slack/events',app)
+slack_event_adapter = SlackEventAdapter(
+    os.environ['SIGINING_SECRET'],'/slack/events',app)
 
-# client = slack.WebClient(token=os.environ['SLACK_TOKEN'])
-# BOT_ID = client.api_call("auth.test")['user_id']
+client = slack.WebClient(token=os.environ['SLACK_TOKEN'])
+BOT_ID = client.api_call("auth.test")['user_id']
 
 
 @app.route("/")
 def home_view():
     return "<h1>Welcome do Painel Bot Slack</h1>"
 
-# #BOT ACTIONSpip install PyGithub
-#         client.chat_postMessage(channel=channel_id , text=text_event)
-    
 
 @app.route("/github")
 def github_api():
@@ -43,4 +38,4 @@ def github_api():
 
 
 if __name__ == "__main__":
-    app.run(debug=os.environ['DEBUG'], port="8000")
+    app.run(debug=os.environ['DEBUG'])
